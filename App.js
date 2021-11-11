@@ -1,9 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React ,{ useState } from 'react';
 import { StyleSheet, Text, View,Button } from 'react-native';
 import { NavigationContainer,useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {InputWithLabel} from './components/inputWithLabel'
+import {Input} from './components/input'
 
 
 //telas principais
@@ -43,9 +45,26 @@ const Stack = createNativeStackNavigator()
 
 const initScreen = () =>{
   const navigation = useNavigation();
+  const [login,setLogin] = useState("");
+  const [password,setPassword] = useState("");
   return(
     <View style={styles.layout}>
-      <Text style={styles.title} >Sing In</Text>
+      <InputWithLabel
+        style={styles.title}
+        label='Sing In'
+        placeholder='Login'
+        value={login}
+        onChangeText={setLogin}
+        inputStyle={styles.login}
+      />
+      <Input
+        style={styles.title}
+        placeholder='Password'
+        value={password}
+        onChangeText={setPassword}
+        inputStyle={styles.login}
+        secureTextEntry
+      />
       <Button title="Login" onPress={()=>navigation.navigate('Main')}/>
     </View>
   )
@@ -70,13 +89,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 8,
-    backgroundColor: '#4181e8',
+    backgroundColor: '#c2c2c2',
   },
   title: {
     margin: 24,
     fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
-    color:'#FFFFFF'
+    color:'#FFFFFF',
   },
+  login: {
+    borderColor:'#FFFFFF',
+    borderWidth:2
+  }
 });
