@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 const novoGasto = () =>{
   return(
     <View style={styles.layout} >
-      <StatusBar style="light" />
+      <StatusBar style='light'/>
       <Text style={styles.title} >insira um novo gasto</Text>
     </View>
   )
@@ -20,6 +20,7 @@ const novoGasto = () =>{
 const resumoDeGastos = () =>{
   return(
     <View style={styles.layout} >
+      <StatusBar style='light'/>
       <Text style={styles.title} >Resumo de gastos por mes</Text>
     </View>
   )
@@ -27,9 +28,9 @@ const resumoDeGastos = () =>{
 
 const MainNavigator = () =>{
   return(
-    <Tab.Navigator>
-      <Tab.Screen name="novoGasto" component={novoGasto}/>
-      <Tab.Screen name="resumoDeGastos" component={resumoDeGastos}/>
+    <Tab.Navigator >
+      <Tab.Screen name="novoGasto" component={novoGasto} options={{ headerShown: false }}/>
+      <Tab.Screen name="resumoDeGastos" component={resumoDeGastos} options={{ headerShown: false }}/>
     </Tab.Navigator>
   )
 }
@@ -44,7 +45,7 @@ const initScreen = () =>{
   const navigation = useNavigation();
   return(
     <View style={styles.layout}>
-      <Text style={styles.title} >initScreen</Text>
+      <Text style={styles.title} >Sing In</Text>
       <Button title="Login" onPress={()=>navigation.navigate('Main')}/>
     </View>
   )
@@ -56,9 +57,9 @@ const initScreen = () =>{
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator headerMode="none">
-        <Stack.Screen name="Init" component={initScreen}/>
-        <Stack.Screen name="Main" component={MainNavigator}/>
+      <Stack.Navigator >
+        <Stack.Screen name="Init" component={initScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="Main" component={MainNavigator} options={{ headerShown: false }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
