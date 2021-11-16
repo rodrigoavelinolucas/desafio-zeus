@@ -75,7 +75,7 @@ const MainNavigator = () =>{
 }
 
 /*
-s
+ss
 */
 
 //telas iniciais
